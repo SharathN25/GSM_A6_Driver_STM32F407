@@ -16,14 +16,14 @@ DMA_HandleTypeDef myDMA_Uart2Handle;
 char RX_Buffer[RX_BUFFER_SIZE];
 
 
-
+/***************************** Private Functions for UART and DMA Configuration *****************************/
 /**
   *@brief    Configure UART
-	*@param    None
-	*@retval   None
+  *@param    None
+  *@retval   None
 */
 
-void UART_Config(void)
+static void UART_Config(void)
 {
 	__HAL_RCC_GPIOA_CLK_ENABLE();
 	__HAL_RCC_USART2_CLK_ENABLE();
@@ -53,10 +53,10 @@ void UART_Config(void)
 
 /**
   *@brief    Configure DMA
-	*@param    None
-	*@retval   None
+  *@param    None
+  *@retval   None
 */
-void DMA_Config(void)
+static void DMA_Config(void)
 {
 	__HAL_RCC_DMA1_CLK_ENABLE();
 	myDMA_Uart2Handle.Instance = DMA1_Stream5;
@@ -79,12 +79,15 @@ void DMA_Config(void)
 	
 }
 
+/******************************************************************************************************************/
 
 
+
+/********************************************* GSM A6 APIs ********************************************************/
 /**
   *@brief    Compares the GSM-data strings with given String
-	*@param    string : Character pointer to sting to be compared
-	*@retval   if given string present in the GSM_String, returns 1
+  *@param    string : Character pointer to sting to be compared
+  *@retval   if given string present in the GSM_String, returns 1
 	           else returns 0.
 */
 int GSM_Compare_GSMData_With(const char* string)
@@ -103,8 +106,8 @@ int GSM_Compare_GSMData_With(const char* string)
 
 /**
   *@brief    Send AT Command to GSM A6 Module
-	*@param    AT_CMD : command string to be transmitted
-	*@retval   None
+  *@param    AT_CMD : command string to be transmitted
+  *@retval   None
 */
 void GSM_Send_AT_Command(char* AT_CMD)
 {
@@ -116,8 +119,8 @@ void GSM_Send_AT_Command(char* AT_CMD)
 /**
   *@brief    Receive Call. when this API is called its receive call 
              by sending "ATA" command to GSM module
-	*@param    None
-	*@retval   None
+  *@param    None
+  *@retval   None
 */
 void GSM_Receive_Call(void)
 {
@@ -136,12 +139,25 @@ void GSM_Receive_Call(void)
 }
 
 
+/**
+  *@brief    Hang up the Call. when this API is called it terminates call 
+             by sending "ATH" command to GSM module
+  *@param    None
+  *@retval   None
+*/
+void GSM_HangUp_Call(void)
+{
+	HAL_Delay(500);
+	GSM_Send_AT_Command("ATH\r");  //ATH - Hang Up call command
+	HAL_Delay(500);
+}
+
 
 
 /**
   *@brief    Make a call to given phone number
-	*@param    phone_number 
-	*@retval   None
+  *@param    phone_number 
+  *@retval   None
 */
 void GSM_Make_Call(char* phone_number)
 {
@@ -156,9 +172,9 @@ void GSM_Make_Call(char* phone_number)
 
 /**
   *@brief    Send Text Mesaage 
-	*@param    Message:  Text message to be sent
+  *@param    Message:  Text message to be sent
   *@param    phone_number : Phone number
-	*@retval   None
+  *@retval   None
 */
 void GSM_Send_SMS(char* Message, char* phone_number)
 {
@@ -190,8 +206,8 @@ void GSM_Send_SMS(char* Message, char* phone_number)
 
 /**
   *@brief    Receive SMS
-	*@param    None
-	*@retval   None
+  *@param    None
+  *@retval   None
 */
 void GSM_Receive_SMS(void)
 {
@@ -205,8 +221,8 @@ void GSM_Receive_SMS(void)
 
 /**
   *@brief    Initialize the GSM A6 Module
-	*@param    None
-	*@retval   None
+  *@param    None
+  *@retval   None
 */
 void GSM_Init(void)
 {
@@ -219,11 +235,23 @@ void GSM_Init(void)
 	/* Start rceiving data as soon as data is available */
 	HAL_UART_Receive_DMA(&myUARThandle,(uint8_t *)RX_Buffer, RX_BUFFER_SIZE);
 	
-  /* Wait 15 to 20 Seconds - Let the GSM module get connected to network */
+    /* Wait 15 to 20 Seconds - Let the GSM module get connected to network */
 	HAL_Delay(20000);
+   
+    /* Send Basic AT Commmand */
+	GSM_Send_AT_Command("AT\r");
+    HAL_Delay(300);
+
+    /*Selects SMS message format as text*/
+    GSM_Send_AT_Command("AT+CMGF=1\r");
+    HAL_Delay(500);
+
+    /*specify how newly arrived SMS messages should be handled*/
+    GSM_Send_AT_Command("AT+CNMI=1,2,0,0,0\r");
+    HAL_Delay(1000);
 }
 
-	
+/********************************************* GSM A6 APIs - END ************************************************/	
 
 /*Sys tick handler for delay */
 void SysTick_Handler(void)
