@@ -19,24 +19,24 @@
 
 /**
   *@brief    Configure UART
-	*@param    None
-	*@retval   None
+  *@param    None
+  *@retval   None
 */
 void UART_Config(void);
 
 
 /**
   *@brief    Configure DMA
-	*@param    None
-	*@retval   None
+  *@param    None
+  *@retval   None
 */
 void DMA_Config(void);
 
 
 /**
   *@brief    Compares the GSM-data strings with given String
-	*@param    string : Character pointer to sting to be compared
-	*@retval   if given string present in the GSM_String, returns 1
+  *@param    string : Character pointer to sting to be compared
+  *@retval   if given string present in the GSM_String, returns 1
 	           else returns 0.
 */
 int GSM_Compare_GSMData_With(const char* string);
@@ -44,48 +44,57 @@ int GSM_Compare_GSMData_With(const char* string);
 
 /**
   *@brief    Send AT Command to GSM A6 Module
-	*@param    AT_CMD : command string to be transmitted
-	*@retval   None
+  *@param    AT_CMD : command string to be transmitted
+  *@retval   None
 */
 void GSM_Send_AT_Command(char* AT_CMD);
 
 /**
   *@brief    Make a call to given phone number
-	*@param    phone_number 
-	*@retval   None
+  *@param    phone_number 
+  *@retval   None
 */
 void GSM_Make_Call(char* phone_number);
 
 /**
   *@brief    Receive Call. when this API is called it receives call 
              by sending "ATA" command to GSM module
-	*@param    None
-	*@retval   None
+  *@param    None
+  *@retval   None
 */
 void GSM_Receive_Call(void);
 
 
 /**
+  *@brief    Hang up the Call. when this API is called it terminates call 
+             by sending "ATH" command to GSM module
+  *@param    None
+  *@retval   None
+*/
+void GSM_HangUp_Call(void);
+
+
+/**
   *@brief    Send Text Mesaage 
-	*@param    Message:  Text message to be sent
+  *@param    Message:  Text message to be sent
   *@param    phone_number : Phone number
-	*@retval   None
+  *@retval   None
 */
 void GSM_Send_SMS(char* Message, char* phone_number);
 
 
 /**
   *@brief    Receive SMS
-	*@param    None
-	*@retval   None
+  *@param    None
+  *@retval   None
 */
 void GSM_Receive_SMS(void);
 
 
 /**
   *@brief    Initialize the GSM A6 Module
-	*@param    None
-	*@retval   None
+  *@param    None
+  *@retval   None
 */
 void GSM_Init(void);
 
