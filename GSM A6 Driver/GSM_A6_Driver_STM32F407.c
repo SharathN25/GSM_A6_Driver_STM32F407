@@ -18,10 +18,10 @@ DMA_HandleTypeDef myDMA_Uart2Handle;
 char RX_Buffer[RX_BUFFER_SIZE];
 
 /*"Incoming_SMS_Phone_num" to store incomming SMS number */
-Incoming_SMS_Phone_Num[13] = {'\0'};
+char Incoming_SMS_Phone_Num[13] = {'\0'};
 
 /*Incoming_SMS_Message" to store SMS received */
-Incoming_SMS_Message[100] ={'\0'};
+char Incoming_SMS_Message[100] ={'\0'};
 
 /***************************** Private Functions for UART and DMA Configuration *****************************/
 /**
@@ -212,14 +212,15 @@ void GSM_Send_SMS(char* Message, char* phone_number)
 
 
 /**
-  *@brief    Receive SMS
+  *@brief    Receive SMS , Stores Message sender number in "Incoming_SMS_Phone_Num" and
+	           Incoming Message in "Incoming_SMS_Message"
   *@param    None
   *@retval   None
 */
 void GSM_Receive_SMS(void)
 {
 	char temp_buffer[RX_BUFFER_SIZE];
-	int i=0,j=0,k=0,l=0,m=0,check=0;
+	int i=0,j=0,k=0,l=0,m=0;
 
 	/*Store RX_buffer values into temp_buffer*/
 	while(i<=127)
@@ -236,7 +237,7 @@ void GSM_Receive_SMS(void)
  
     /*store phone number*/
     for(j=0;j<13;j++)
-    	In_SMS_phone_num[j] = ptr[1+j];
+    	Incoming_SMS_Phone_Num[j] = ptr[1+j];
  
  
     /*string patter to detect start of mesaage*/
@@ -253,7 +254,7 @@ void GSM_Receive_SMS(void)
 	 {
 		 if(k == 3)
 		 {
-			 In_SMS_message[l] = *(ptr+m);;
+			 Incoming_SMS_Message[l] = *(ptr+m);;
 			 l++;
 		 }
 		 
@@ -267,18 +268,18 @@ void GSM_Receive_SMS(void)
      {
 	 	if(ptr+m == &temp_buffer[127])
 		{
-			In_SMS_message[l] = *(ptr+m);
+			Incoming_SMS_Message[l] = *(ptr+m);
 		    ptr = &temp_buffer[0];
 			m = 0;
 		}
 		else
 		{
-			In_SMS_message[l] = *(ptr+m);
+			Incoming_SMS_Message[l] = *(ptr+m);
 		    l++; 
 		    m++;
-        }	
+    }	
 
-     }
+  }
 
 }     
 

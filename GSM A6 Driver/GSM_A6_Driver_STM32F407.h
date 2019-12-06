@@ -84,7 +84,8 @@ void GSM_Send_SMS(char* Message, char* phone_number);
 
 
 /**
-  *@brief    Receive SMS
+  *@brief    Receive SMS , Stores Message sender number in "Incoming_SMS_Phone_Num" and
+	           Incoming Message in "Incoming_SMS_Message"
   *@param    None
   *@retval   None
 */
