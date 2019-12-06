@@ -13,8 +13,15 @@
 
 UART_HandleTypeDef myUARThandle;
 DMA_HandleTypeDef myDMA_Uart2Handle;
+
+/* "RX buffer" to store incoming data from GSM module */
 char RX_Buffer[RX_BUFFER_SIZE];
 
+/*"Incoming_SMS_Phone_num" to store incomming SMS number */
+Incoming_SMS_Phone_Num[13] = {'\0'};
+
+/*Incoming_SMS_Message" to store SMS received */
+Incoming_SMS_Message[100] ={'\0'};
 
 /***************************** Private Functions for UART and DMA Configuration *****************************/
 /**
@@ -211,11 +218,69 @@ void GSM_Send_SMS(char* Message, char* phone_number)
 */
 void GSM_Receive_SMS(void)
 {
-	
-	///Receive code here
-	//Pending
-}
+	char temp_buffer[RX_BUFFER_SIZE];
+	int i=0,j=0,k=0,l=0,m=0,check=0;
 
+	/*Store RX_buffer values into temp_buffer*/
+	while(i<=127)
+	{
+		temp_buffer[i] = RX_Buffer[i];
+		i++;	
+	}
+
+	/*string pattern to detect start of phone number*/
+    char phone_pattern[2] ={'"','+'}; 
+ 
+    /* search for phone number */
+    char* ptr = strstr(temp_buffer,phone_pattern);
+ 
+    /*store phone number*/
+    for(j=0;j<13;j++)
+    	In_SMS_phone_num[j] = ptr[1+j];
+ 
+ 
+    /*string patter to detect start of mesaage*/
+    char sms_pattern[2] ={'6','"'};
+ 
+   /*search for message */
+   ptr = strstr(temp_buffer,sms_pattern);
+  
+   for(k=0;k<4;k++)
+   {
+	 ptr+=1; //Increment ptr
+	 /*check if it is pointing to end of buffer*/
+	 if(ptr == &temp_buffer[127])
+	 {
+		 if(k == 3)
+		 {
+			 In_SMS_message[l] = *(ptr+m);;
+			 l++;
+		 }
+		 
+		 ptr = &temp_buffer[0];  //if yes, goto start of buffer
+	  }
+
+	}
+  
+    /*store the message untill "/r" is found, which indicates end of SMS*/
+     while(*(ptr+m)!='\r')
+     {
+	 	if(ptr+m == &temp_buffer[127])
+		{
+			In_SMS_message[l] = *(ptr+m);
+		    ptr = &temp_buffer[0];
+			m = 0;
+		}
+		else
+		{
+			In_SMS_message[l] = *(ptr+m);
+		    l++; 
+		    m++;
+        }	
+
+     }
+
+}     
 
 
 
