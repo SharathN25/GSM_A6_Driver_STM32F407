@@ -1,6 +1,6 @@
 Dependencies for Project 'STM32F407_GSM_A6_Example', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x5DE3803F)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\STM32F407_GSM_A6_Example-I.\RTE\Device\STM32F407VGTx-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\Inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (GSM_A6_Driver_STM32F407.h)(0x5DE35295)
+F (.\main.c)(0x5DEA583F)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\STM32F407_GSM_A6_Example-I.\RTE\Device\STM32F407VGTx-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\Inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (GSM_A6_Driver_STM32F407.h)(0x5DE3E6CC)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x5C5BB3DE)
 I (.\RTE\Device\STM32F407VGTx\stm32f4xx_hal_conf.h)(0x5D0C935C)
 I (.\RTE\_Target_1\RTE_Components.h)(0x5DE376C9)
@@ -29,8 +29,8 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x5C5BB406)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x5C5BB406)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x5C5BB434)
-F (.\GSM_A6_Driver_STM32F407.c)(0x5DE38002)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\STM32F407_GSM_A6_Example-I.\RTE\Device\STM32F407VGTx-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\Inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx-o .\objects\gsm_a6_driver_stm32f407.o --omf_browse .\objects\gsm_a6_driver_stm32f407.crf --depend .\objects\gsm_a6_driver_stm32f407.d)
-I (GSM_A6_Driver_STM32F407.h)(0x5DE35295)
+F (.\GSM_A6_Driver_STM32F407.c)(0x5DEA546D)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\STM32F407_GSM_A6_Example-I.\RTE\Device\STM32F407VGTx-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\Inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx-o .\objects\gsm_a6_driver_stm32f407.o --omf_browse .\objects\gsm_a6_driver_stm32f407.crf --depend .\objects\gsm_a6_driver_stm32f407.d)
+I (GSM_A6_Driver_STM32F407.h)(0x5DE3E6CC)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x5C5BB3DE)
 I (.\RTE\Device\STM32F407VGTx\stm32f4xx_hal_conf.h)(0x5D0C935C)
 I (.\RTE\_Target_1\RTE_Components.h)(0x5DE376C9)
@@ -60,7 +60,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x5C5BB406)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x5C5BB434)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EF054)
-F (.\GSM_A6_Driver_STM32F407.h)(0x5DE35295)()
+F (.\GSM_A6_Driver_STM32F407.h)(0x5DE3E6CC)()
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c)(0x5CADA3A4)(--c99 --gnu -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\STM32F407_GSM_A6_Example-I.\RTE\Device\STM32F407VGTx-I.\RTE\_Target_1-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\Inc-D__UVISION_VERSION="525" -D_RTE_ -DSTM32F407xx-o .\objects\stm32f4xx_hal.o --omf_browse .\objects\stm32f4xx_hal.crf --depend .\objects\stm32f4xx_hal.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.14.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x5C5BB3DE)
 I (.\RTE\Device\STM32F407VGTx\stm32f4xx_hal_conf.h)(0x5D0C935C)

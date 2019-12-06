@@ -23,10 +23,12 @@ int main(void)
 	
  while(1)
  {
-	 /* check for "RING" string in GSM data */
-	 if(GSM_Compare_GSMData_With("RING"))   
-		 GSM_Receive_Call();   //If "RING" found, receive the call.
-	
+	 if(GSM_Compare_GSMData_With("RING"))
+		 GSM_Receive_Call();
+	 
+	 if(GSM_Compare_GSMData_With("MESSAGE"))
+		 GSM_Receive_SMS();
+	 
 	 HAL_Delay(500);
  
  }
